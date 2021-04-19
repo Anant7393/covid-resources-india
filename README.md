@@ -1,28 +1,19 @@
 # Covid19 India Response
 
 ## Source
-Data is curated by [Bhanupriya Rao](https://twitter.com/bhanupriya_rao) and [Bhanu](https://twitter.com/thoughtisdead).
+Data is curated by [Suresh Ediga](https://twitter.com/suresh_ediga).
 
-[Spreadsheet link](https://docs.google.com/spreadsheets/d/1_JIaWdsm6fYPStN2fin0wt4ad2JSn8Sqt5bNeBZ4riM/edit?usp=sharing)
+[Spreadsheet link](https://docs.google.com/spreadsheets/d/1-Df0fLteX567HFkHjyYfxnUhqjUz9krafU27zLcqPrM/edit#gid=133854852)
 
 ## Content
 
 - Navigation
   - Links
-    - By BehanBox
+    - By Suresh Ediga
     - Tweet
     - Data
   - Title
 - Body
-
-## Features
-
-- [x] category links
-- [x] search categories
-- [ ] footer
-- [x] link to behanbox
-- [x] Twitter sharing option
-- [x] Persistent filters
 
 ## Contribute
 
@@ -32,4 +23,4 @@ Data is curated by [Bhanupriya Rao](https://twitter.com/bhanupriya_rao) and [Bha
 
 or
 
-Drop a note to [BehanBox](https://twitter.com/behanbox) on Twitter.
+Drop a note to [Suresh Ediga](https://twitter.com/suresh_ediga) on Twitter.
