@@ -30,3 +30,6 @@ body {
 .formhandler .size {
   display: none;
 }
+.formhandler {
+  overflow: auto;
+}

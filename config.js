@@ -6,5 +6,5 @@ var config = {
     ],
     "title": "Covid-19 Emergency Contact Information"
   },
-  "cover": "Emergency contact information for oxygen, medicines and doctors"
+  "cover": "Find resources for oxygen, medicines and doctors"
 }

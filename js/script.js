@@ -39,11 +39,22 @@ function render_page(arrange_by) {
   }
   var tmpl = _.template($("#item-template").html())
   $('#updates').html(tmpl(data))
-  $('.formhandler').formhandler({
+  $('.formhandler').on('load', function() {
+    $('.formhandler .page').html($('.search').html())
+  }).formhandler({
     data: sheets_global,
     sort: false,
-    pageSize: 10,
-    columns: [{link: false, name: '*'}, {name: 'Timestamp', hide: true}],
+    pageSize: 100,
+    columns: [
+      {link: false, name: '*'}, {name: 'Timestamp', hide: true},
+      {name: 'Address (if available)', hide: true},
+      {name: 'Contact Name (Person/Organization/Group) ', title: 'Contact', link: false},
+      {name: 'Contact details (Person/Organization/Group) - Phone Number', title: 'Phone', link: false},
+      {name: 'If selected other, please provide details', title: 'Other details', link: false},
+      {name: 'Links', format: function(_obj) {
+        return _obj.row['Links'].length > 0 ? `<a target="_blank" rel="noopener" href="${_obj.row['Links']}">Read more</a>` : ''
+      }}
+    ],
     export: false,
     count: false
   })

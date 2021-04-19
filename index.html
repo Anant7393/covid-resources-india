@@ -35,6 +35,9 @@
       <li>
         <a target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1-Df0fLteX567HFkHjyYfxnUhqjUz9krafU27zLcqPrM/edit?usp=sharing">Data</a>
       </li>
+      <li>
+        <a target="_blank" rel="noopener" href="https://docs.google.com/forms/d/e/1FAIpQLSeQnnQUWvaxj9R6PK8Ggwri5iagzUWyAlfCvm130pzwzw8qIQ/viewform">Submit</a>
+      </li>
     </ul>
 
     <!-- navigation panel -->
@@ -47,6 +50,9 @@
             <li>
               <a target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1-Df0fLteX567HFkHjyYfxnUhqjUz9krafU27zLcqPrM/edit?usp=sharing">Data</a>
             </li>
+            <li>
+              <a target="_blank" rel="noopener" href="https://docs.google.com/forms/d/e/1FAIpQLSeQnnQUWvaxj9R6PK8Ggwri5iagzUWyAlfCvm130pzwzw8qIQ/viewform">Submit</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -54,12 +60,17 @@
     <p class="center flow-text">
       <%- config.cover %>
     </p>
+    <p class="center">
+      All information curated here is not owned by us, but available publicly. We are in the process of verifying the same.
+    </p>
     <div class="divider"></div>
     <p class="center">Viewing <strong><span class="events-counter s7"></span></strong> entries.</p>
   </script>
 
-  <div class="container">
-  </div>
+  <script type="text/html" class="search">
+    <input class="form-control form-control-sm" type="search" placeholder="Search by text"
+        autofocus data-search="data-val" data-target="tr" data-hide-class="d-none">
+  </script>
 
   <div id="updates">Loading updates...</div>
   <script id="item-template" type="text/html">
@@ -89,6 +100,9 @@
                         <p>Additional info: <%- item['Additional Comments'] %></p>
                       <% } %>
                       <p>Where: <strong> <%- state %> </strong></p>
+                      <% if(item['Links'].length > 0) { %>
+                        <p><a rel="noopener" target="_blank" href="<%- item['Links'] %>">Read more</a></p>
+                      <% } %>
                     </div>
                   </div>
                 </div>
@@ -110,8 +124,8 @@
             Write to <a target="_blank" rel="noopener" href="https://twitter.com/suresh_ediga" class="btn-flat waves-effect waves-light lighten-2">Suresh Ediga</a>
           </p>
         </div>
-        <div class="l6 s12">
-          <h5>Source</h5>
+        <div class="col l6 s12">
+          <h5 class="white-text">Source</h5>
           <p class="grey-text text-lighten-4">
             View <a rel="noopener" target="_blank" href="https://github.com/bkamapantula/covid-resources-india" class="btn-flat waves-effect waves-light lighten-2">GitHub repository</a>
           </p>
