@@ -18,3 +18,15 @@ body {
 .state-card {
   font-family: 'Lato', sans-serif;
 }
+.d-none {
+  display: none;
+}
+.formhandler th .dropdown-menu {
+  display: none;
+}
+.formhandler .page {
+  text-align: right;
+}
+.formhandler .size {
+  display: none;
+}

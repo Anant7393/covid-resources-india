@@ -23,8 +23,8 @@
   <script type="text/javascript" src="config.js"></script>
   <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/combine/npm/jquery,npm/lodash,npm/g1"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </head>
 <body>
@@ -61,30 +61,49 @@
       <%- config.cover %>
     </p>
     <div class="divider"></div>
-    <p class="center">Viewing <span class="events-counter"></span>.</p>
+    <p class="center">Viewing <strong><span class="events-counter s7"></span></strong> entries.</p>
   </script>
+
+  <div class="container">
+  </div>
 
   <div id="updates">Loading updates...</div>
   <script id="item-template" type="text/html">
     <div class="container">
-      <% _.each(data, function(vals, state) { %>
-        <div class="row">
-          <h4 id="<%- state.replace(' ', '_') %>"><%- state %></h4>
-          <% _.each(vals, function(item, item_id) { %>
-            <div class="col s12 m4 state-card">
-              <div class="card border-<%- item.type %>">
-                <div class="card-content dark-text">
-                  <span class="card-title"><%- item['Type of Resource'] %></span>
-                  <p>Name: <%- item['Contact Name (Person/Organization/Group) '] %></p>
-                  <p>Contact: <%- item['Contact details (Person/Organization/Group) - Phone Number (preferable)'] %></p>
-                  <p>Phone: <%- item['INCHARGE RELIEF OFFICER MOBILE'] %></p>
-                  <p>Additional info: <%- item['Additional Comments'] %></p>
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s3"><a href="#cards">Cards</a></li>
+            <li class="tab col s3"><a class="active" href="#table">Table</a></li>
+          </ul>
+        </div>
+        <div id="cards" class="col s12">
+          <div class="search-wrapper row">
+            <input class="col s12" type="search" data-search="@text" data-target=".state-card .card" data-hide-class="d-none" placeholder="Type text to search... ex: Tushar">
+          </div>
+          <% _.each(data, function(vals, state) { %>
+            <div class="row">
+              <h4 id="<%- state.replace(' ', '_') %>"><%- state %></h4>
+              <% _.each(vals, function(item, item_id) { %>
+                <div class="col s12 m4 state-card">
+                  <div class="card border-<%- item.type %>">
+                    <div class="card-content dark-text">
+                      <span class="card-title"><%- item['Type of Resource'] %></span>
+                      <p>Name: <strong><%- item['Contact Name (Person/Organization/Group) '] %></strong></p>
+                      <p>Contact: <%- item['Contact details (Person/Organization/Group) - Phone Number (preferable)'] %></p>
+                      <% if(item['Additional Comments'].length > 0) { %>
+                        <p>Additional info: <%- item['Additional Comments'] %></p>
+                      <% } %>
+                      <p>Where: <strong> <%- state %> </strong></p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              <% }) %>
             </div>
           <% }) %>
         </div>
-      <% }) %>
+        <div id="table" class="col s12 formhandler"></div>
+      </div>
     </div>
   </script>
   <script src="js/script.js"></script>
