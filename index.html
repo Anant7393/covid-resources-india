@@ -95,11 +95,13 @@
                     <div class="card-content dark-text">
                       <span class="card-title"><%- item['Type of Resource'] %></span>
                       <p>Name: <strong><%- item['Contact Name (Person/Organization/Group) '] %></strong></p>
-                      <p>Contact: <%- item['Contact details (Person/Organization/Group) - Phone Number (preferable)'] %></p>
+                      <p>Contact: <%- item['Contact details (Person/Organization/Group) - Phone Number'] %></p>
                       <% if(item['Additional Comments'].length > 0) { %>
                         <p>Additional info: <%- item['Additional Comments'] %></p>
                       <% } %>
-                      <p>Where: <strong> <%- state %> </strong></p>
+                      <% if(state.length > 0) { %>
+                        <p>Where: <strong> <%- state %> </strong></p>
+                      <% } %>
                       <% if(item['Links'].length > 0) { %>
                         <p><a rel="noopener" target="_blank" href="<%- item['Links'] %>">Read more</a></p>
                       <% } %>
