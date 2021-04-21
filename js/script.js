@@ -33,9 +33,10 @@ function render_page(arrange_by) {
     by_date = _.groupBy(filtered_elements_dates, "when")
     data = {data: by_date, _by: 'date'}
   } else {  // state
-    by_location = _.groupBy(sheets_global, "City")
+    let groupby_column = "Type of Resource" // City
+    by_location = _.groupBy(sheets_global, groupby_column)
     g_sorted = _(by_location).toPairs().sortBy(0).fromPairs().value()
-    data = {data: g_sorted, _by: 'City'}
+    data = {data: g_sorted, _by: groupby_column}
   }
   var tmpl = _.template($("#item-template").html())
   $('#updates').html(tmpl(data))
@@ -44,7 +45,7 @@ function render_page(arrange_by) {
   }).formhandler({
     data: sheets_global,
     sort: false,
-    pageSize: 100,
+    pageSize: sheets_global.length,
     columns: [
       {link: false, name: '*'}, {name: 'Timestamp', hide: true},
       {name: 'Address (if available)', hide: true},
