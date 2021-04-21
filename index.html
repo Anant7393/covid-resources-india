@@ -39,7 +39,7 @@
     </ul>
 
     <!-- navigation panel -->
-    <div class="navbar-fixed">
+    <!-- <div class="navbar-fixed"> -->
       <nav>
         <div class="nav-wrapper">
           <a href="#" class="right"><%- config.toppanel.title %></a>
@@ -54,7 +54,7 @@
           </ul>
         </div>
       </nav>
-    </div>
+    <!-- </div> -->
     <p class="center flow-text">
       <%- config.cover %>
     </p>
@@ -81,11 +81,18 @@
           </ul>
         </div>
         <div id="cards" class="col s12">
+          <div class="row section hide-on-small-only">
+            <span>Skip to: </span>
+            <% console.log(Object.keys(data).length) %>
+            <% _.each(Object.keys(data), function(resource, ind) { %>
+              <a href="#<%= _.replace(resource, /,| |\//g, '-').toLowerCase() %>"><%= section_mappings[resource] || resource %></a> <%= ind < Object.keys(data).length - 1 ? ' || ' : '' %>
+            <% }) %>
+          </div>
           <div class="search-wrapper row">
-            <input class="col s12" type="search" data-search="@text" data-target=".state-card" data-hide-class="d-none" placeholder="Type text to search... ex: Tushar">
+            <input class="col s12" type="search" data-search="@text" data-target=".state-card" data-hide-class="d-none" placeholder="Type text to search... ex: Remdesivir or Oxygen or Hyderabad">
           </div>
           <% _.each(data, function(vals, resource) { %>
-            <div class="row">
+            <div class="row" id="<%= _.replace(resource, /,| |\//g, '-').toLowerCase() %>">
               <h4 class="state-card" id="<%- resource.replace(' ', '_') %>"><%- resource %></h4>
               <% _.each(vals, function(item, item_id) { %>
                 <% if(item['Contact Name (Person/Organization/Group) '] || item['Contact details (Person/Organization/Group) - Phone Number']) { %>
@@ -120,6 +127,13 @@
       </div>
     </div>
   </script>
+
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">arrow_upward</i>
+    </a>
+  </div>
+
   <script src="js/script.js"></script>
   <footer class="page-footer">
     <div class="container">

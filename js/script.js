@@ -2,6 +2,12 @@ var url = "https://docs.google.com/spreadsheets/d/1-Df0fLteX567HFkHjyYfxnUhqjUz9
 var g1_url = g1.url.parse(location.href)
 var sheets_global
 
+let section_mappings = {
+  'Doctors who can provide online consultation': 'Online consultation',
+  'Covid Tests': 'Tests',
+  'Food/Grocery supply for the Covid patients in isolation': 'Food/Grocery supply'
+}
+
 /**
   * hide subset of state cards based on URL param or search param
   * @param {string} val
@@ -62,6 +68,7 @@ function render_page(arrange_by) {
   $('body').search()
   var el = document.querySelector('.tabs')
   M.Tabs.init(el)
+  $('.fixed-action-btn').floatingActionButton()
 }
 
 function render_static_content() {
@@ -117,4 +124,6 @@ $('body').on('click', 'a.btn', function() {
   toggle_state_cards(label, 'view')
   g1_url.update({view: label, cat: null}, 'view=toggle&cat=del')
   history.pushState({}, '', g1_url.toString())
+}).on('click', '.fixed-action-btn', function() {
+  window.scroll(0, 0)
 })
