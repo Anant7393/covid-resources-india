@@ -95,6 +95,8 @@
             <div class="row" id="<%= _.replace(resource, /,| |\//g, '-').toLowerCase() %>">
               <h4 class="state-card" id="<%- resource.replace(' ', '_') %>"><%- resource %></h4>
               <% _.each(vals, function(item, item_id) { %>
+                <% let _date = new Date(item['Timestamp']) %>
+                <% _date = _date.getDate() + "/" + (_date.getMonth()+1) + "/" + _date.getFullYear() %>
                 <% if(item['Contact Name (Person/Organization/Group) '] || item['Contact details (Person/Organization/Group) - Phone Number']) { %>
                   <div class="col s12 m4 state-card">
                     <div class="card border-<%- item.type %>">
@@ -115,6 +117,7 @@
                         <% if(item['Links'].length > 0) { %>
                           <p><a rel="noopener" target="_blank" href="<%- item['Links'] %>">Read more</a></p>
                         <% } %>
+                        <p>Date added: <%= _date %></p>
                       </div>
                     </div>
                   </div>
